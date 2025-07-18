@@ -1,0 +1,25 @@
+[package]
+name = "havendrive"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "1.38", features = ["full"] }
+anyhow = "1.0"
+log = "0.4"
+chrono = "0.4"
+byteorder = "1.5"
+
+clap = { version = "4.5.4", features = ["derive"] }
+
+[[bin]]
+name = "read_myactuator_motors"
+path = "src/tools/read_myactuator_motors.rs"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+socketcan = "3.5.0"
+
+[lib]
+path = "src/lib.rs"
